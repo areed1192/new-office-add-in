@@ -3,6 +3,10 @@ import { Button, ButtonType } from "office-ui-fabric-react";
 import Header from "./Header";
 import HeroList, { HeroListItem } from "./HeroList";
 import Progress from "./Progress";
+
+import http = require('http');
+// import request = require('request');
+
 /* global Button, console, Excel, Header, HeroList, HeroListItem, Progress */
 
 export interface AppProps {
@@ -41,16 +45,34 @@ export default class App extends React.Component<AppProps, AppState> {
     });
   }
 
+  callApi = async () => {
+    fetch('http://localhost:5000/api/ciks', {
+      mode: 'cors',
+      credentials: 'same-origin',
+      method: 'GET'
+    }
+    ).then(response => response.json()
+    ).then(data => console.log(data))
+
+  };
+
+
   // I assign this function on line 115.
   fetchCikNumbers = async () => {
 
-    try {
+    const hostname = '127.0.0.1';
+    const port = 4000;
+
+    const server = http.createServer((_req, res) => {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end('Hello World');
 
       // Make a new HTTP Request.
       var xhr = new XMLHttpRequest();
 
       // Define the Method and URL.
-      xhr.open('GET', `https://www.sec.gov/files/company_tickers.json`);
+      xhr.open('GET', "https://www.sec.gov/files/company_tickers.json");
 
       // Maybe set the "Access-Control" header?
       // xhr.setRequestHeader('Access-Control-Allow-Origin','*');
@@ -63,10 +85,52 @@ export default class App extends React.Component<AppProps, AppState> {
 
       // Send the Request.
       xhr.send();
-   
-    } catch (error) {
-      console.error(error);
-    }
+
+      // request.get('https://www.sec.gov/files/company_tickers.json', (_error, _response, body) => {
+      //     let json = JSON.parse(body);
+      //     console.log(json);
+      // });
+
+      // request.get(`https://www.usa.gov/rss/updates.xml`, {
+      //     headers: {
+      //         'Access-Control-Allow-Origin': '*'
+      //     },
+      //     method: "GET",
+      //     mode: "cors",
+      //     referrer: "origin"
+      // })
+      // ).then(response => response.text).then(data => {
+      //     console.log(data)
+      // }).catch(err => console.log(err))
+    });
+
+    server.listen(port, hostname, () => {
+      console.log(`Server running at http://${hostname}:${port}/`);
+    });
+
+    // try {
+
+    //   // Make a new HTTP Request.
+    //   var xhr = new XMLHttpRequest();
+
+    //   // Define the Method and URL.
+    //   xhr.open('GET', `https://www.sec.gov/files/company_tickers.json`);
+
+    //   // Maybe set the "Access-Control" header?
+    //   // xhr.setRequestHeader('Access-Control-Allow-Origin','*');
+
+    //   // Print the Text to the Console.
+    //   xhr.onload = function (e) {
+    //     console.log(this.responseText);
+    //     console.log(e);
+    //   }
+
+    //   // Send the Request.
+    //   xhr.send();
+
+    // } catch (error) {
+    //   console.error(error);
+    // }
 
   }
 
@@ -112,7 +176,7 @@ export default class App extends React.Component<AppProps, AppState> {
             className="ms-welcome__action"
             buttonType={ButtonType.hero}
             iconProps={{ iconName: "ChevronRight" }}
-            onClick={this.fetchCikNumbers}
+            onClick={this.callApi}
           >
             Run
           </Button>

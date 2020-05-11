@@ -9,7 +9,8 @@
   "config": {
     "app-to-debug": "excel",
     "app-type-to-debug": "desktop",
-    "dev-server-port": 3000
+    "dev-server-port": 3000,
+    "source-bundle-url-path": "index.win32"
   },
   "scripts": {
     "build": "webpack -p --mode production --https false",
@@ -27,6 +28,7 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
+    "@types/request": "^2.48.4",
     "core-js": "^3.1.4",
     "es6-promise": "^4.2.8",
     "office-ui-fabric-react": "^7.10.0",
@@ -39,6 +41,7 @@
     "@babel/preset-env": "^7.9.0",
     "@types/find-process": "1.2.0",
     "@types/office-js": "^1.0.91",
+    "@types/custom-functions-runtime": "^1.5.0",
     "@types/office-runtime": "^1.0.13",
     "@types/react": "^16.8.22",
     "@types/react-dom": "^16.8.4",
@@ -48,13 +51,14 @@
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
-    "eslint-config-office-addins": "^1.0.14",
-    "find-process": "^1.4.3",
     "css-loader": "^3.0.0",
+    "custom-functions-metadata-plugin": "^1.0.26",
+    "eslint-config-office-addins": "^1.0.14",
     "eslint-plugin-office-addins": "^0.1.1",
     "eslint-plugin-react": "^7.16.0",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "file-loader": "^4.2.0",
+    "find-process": "^1.4.3",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^4.0.4",
     "less": "^3.9.0",
@@ -73,7 +77,7 @@
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.11.0"
   },
   "prettier": "office-addin-prettier-config"
 }
