@@ -30,3 +30,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 ## Copyright
 
 Copyright (c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\Alex\OneDrive\Desktop\new-office-add-in\node_modules\custom-functions-metadata\lib\cli.js generate C:\Users\Alex\OneDrive\Desktop\new-office-add-in\src\functions\functions.ts C:\Users\Alex\OneDrive\Desktop\new-office-add-in\dist\functions.json
+
+node C:\Users\Alex\OneDrive\Desktop\new-office-add-in\node_modules\custom-functions-metadata\lib\cli.js generate "C:\Users\Alex\OneDrive\Desktop\new-office-add-in\src\functions\functions.ts" "C:\Users\Alex\OneDrive\Desktop\new-office-add-in\dist\functions.json"

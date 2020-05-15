@@ -2,7 +2,7 @@ const devCerts = require("office-addin-dev-certs");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CustomFunctionsMetadataPlugin = require("custom-functions-metadata-plugin");
+const CustomFunctionMetadata = require("custom-functions-metadata");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require('webpack');
 
@@ -55,10 +55,6 @@ module.exports = async (env, options) => {
     },
     plugins: [
       new CleanWebpackPlugin(),
-      new CustomFunctionsMetadataPlugin({
-        output: "functions.json",
-        input: "./src/functions/functions.ts"
-      }),
       new HtmlWebpackPlugin({
         filename: "functions.html",
         template: "./src/functions/functions.html",

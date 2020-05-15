@@ -50,6 +50,15 @@
       "webRoot": "${workspaceFolder}",
       "preLaunchTask": "Debug: Web"
     }
+    // {
+    //   "name": "Function Metadata",
+    //   "type": "node",
+    //   "request": "launch",
+    //   "program": "${workspaceFolder}/node_modules/custom-functions-metadata/lib/cli.js",
+    //   "runtimeExecutable": "npm",
+    //   "runtimeArgs": ["generate"],
+    //   "args": ["--input", "--output"]
+    // }
   ],
   "inputs": [
     {
